@@ -1,0 +1,154 @@
+{
+  "extensionName": {
+    "message": "KnihoMetr",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Vizualizuje a porovnává rozměry knih se standardními formáty.",
+    "description": "Description of the extension"
+  },
+  "triggerTitle": {
+    "message": "Zobrazit rozměry knihy",
+    "description": "Tooltip for trigger button"
+  },
+  "modalTitle": {
+    "message": "Rozměry: $TITLE$",
+    "description": "Modal window title",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Název knihy"
+      }
+    }
+  },
+  "sectionDimensions": {
+    "message": "POROVNÁNÍ ROZMĚRŮ",
+    "description": "2D comparison section title"
+  },
+  "sectionThickness": {
+    "message": "TLOUŠŤKA HŘBETU",
+    "description": "Thickness comparison section title"
+  },
+  "compareWith": {
+    "message": "Porovnat s:",
+    "description": "Label for format/object selector"
+  },
+  "labelBook": {
+    "message": "Kniha",
+    "description": "Label for book dimensions"
+  },
+  "thicknessInfo": {
+    "message": "Tloušťka knihy $THICKNESS$ mm odpovídá přibližně $RATIO$× $OBJECT$",
+    "description": "Thickness comparison info text",
+    "placeholders": {
+      "thickness": {
+        "content": "$1",
+        "example": "23"
+      },
+      "ratio": {
+        "content": "$2",
+        "example": "1.5"
+      },
+      "object": {
+        "content": "$3",
+        "example": "krabička sirek"
+      }
+    }
+  },
+  "thisBook": {
+    "message": "Tato kniha",
+    "description": "Default book title when not found"
+  },
+  "formatA4": {
+    "message": "A4",
+    "description": "A4 format name"
+  },
+  "formatA5": {
+    "message": "A5",
+    "description": "A5 format name"
+  },
+  "formatUSComic": {
+    "message": "US Comic",
+    "description": "US Comic format name"
+  },
+  "formatOmnibus": {
+    "message": "Omnibus",
+    "description": "Omnibus format name"
+  },
+  "formatTankobon": {
+    "message": "Tankobon",
+    "description": "Manga tankobon format name"
+  },
+  "formatBDAlbum": {
+    "message": "BD Album",
+    "description": "European BD album format name"
+  },
+  "categoryISO": {
+    "message": "ISO Formáty",
+    "description": "ISO formats category"
+  },
+  "categoryUSComics": {
+    "message": "US Comics",
+    "description": "US Comics category"
+  },
+  "categoryManga": {
+    "message": "Manga",
+    "description": "Manga category"
+  },
+  "categoryBD": {
+    "message": "BD/Evropské",
+    "description": "European BD category"
+  },
+  "categoryBooks": {
+    "message": "Knihy",
+    "description": "General books category"
+  },
+  "objectMatchbox": {
+    "message": "Krabička sirek",
+    "description": "Matchbox object name"
+  },
+  "objectCards": {
+    "message": "Balíček karet",
+    "description": "Card deck object name"
+  },
+  "objectCoin": {
+    "message": "Česká desetikoruna",
+    "description": "Coin object name"
+  },
+  "objectPencil": {
+    "message": "Tužka (průměr)",
+    "description": "Pencil object name"
+  },
+  "objectSmartphone": {
+    "message": "Smartphone (tloušťka)",
+    "description": "Smartphone object name"
+  },
+  "saveBook": {
+    "message": "Uložit pro porovnání",
+    "description": "Button to save book for later comparison"
+  },
+  "bookSaved": {
+    "message": "Uloženo!",
+    "description": "Confirmation that book was saved"
+  },
+  "bookAlreadySaved": {
+    "message": "Již uloženo",
+    "description": "Book is already in saved list"
+  },
+  "savedBooks": {
+    "message": "Uložené knihy",
+    "description": "Category name for saved books"
+  },
+  "deleteSavedBook": {
+    "message": "Odebrat z uložených",
+    "description": "Button to delete saved book"
+  },
+  "deleteAllSaved": {
+    "message": "Smazat všechny uložené",
+    "description": "Button to delete all saved books"
+  },
+  "noSavedBooks": {
+    "message": "Žádné uložené knihy",
+    "description": "Message when no books are saved"
+  }
+}

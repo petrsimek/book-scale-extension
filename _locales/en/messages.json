@@ -1,0 +1,154 @@
+{
+  "extensionName": {
+    "message": "BookScale",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Visualize and compare book dimensions with standard formats.",
+    "description": "Description of the extension"
+  },
+  "triggerTitle": {
+    "message": "Show book dimensions",
+    "description": "Tooltip for trigger button"
+  },
+  "modalTitle": {
+    "message": "Dimensions: $TITLE$",
+    "description": "Modal window title",
+    "placeholders": {
+      "title": {
+        "content": "$1",
+        "example": "Book Name"
+      }
+    }
+  },
+  "sectionDimensions": {
+    "message": "SIZE COMPARISON",
+    "description": "2D comparison section title"
+  },
+  "sectionThickness": {
+    "message": "SPINE THICKNESS",
+    "description": "Thickness comparison section title"
+  },
+  "compareWith": {
+    "message": "Compare with:",
+    "description": "Label for format/object selector"
+  },
+  "labelBook": {
+    "message": "Book",
+    "description": "Label for book dimensions"
+  },
+  "thicknessInfo": {
+    "message": "Book thickness $THICKNESS$ mm is approximately $RATIO$× $OBJECT$",
+    "description": "Thickness comparison info text",
+    "placeholders": {
+      "thickness": {
+        "content": "$1",
+        "example": "23"
+      },
+      "ratio": {
+        "content": "$2",
+        "example": "1.5"
+      },
+      "object": {
+        "content": "$3",
+        "example": "matchbox"
+      }
+    }
+  },
+  "thisBook": {
+    "message": "This book",
+    "description": "Default book title when not found"
+  },
+  "formatA4": {
+    "message": "A4",
+    "description": "A4 format name"
+  },
+  "formatA5": {
+    "message": "A5",
+    "description": "A5 format name"
+  },
+  "formatUSComic": {
+    "message": "US Comic",
+    "description": "US Comic format name"
+  },
+  "formatOmnibus": {
+    "message": "Omnibus",
+    "description": "Omnibus format name"
+  },
+  "formatTankobon": {
+    "message": "Tankobon",
+    "description": "Manga tankobon format name"
+  },
+  "formatBDAlbum": {
+    "message": "BD Album",
+    "description": "European BD album format name"
+  },
+  "categoryISO": {
+    "message": "ISO Formats",
+    "description": "ISO formats category"
+  },
+  "categoryUSComics": {
+    "message": "US Comics",
+    "description": "US Comics category"
+  },
+  "categoryManga": {
+    "message": "Manga",
+    "description": "Manga category"
+  },
+  "categoryBD": {
+    "message": "BD/European",
+    "description": "European BD category"
+  },
+  "categoryBooks": {
+    "message": "Books",
+    "description": "General books category"
+  },
+  "objectMatchbox": {
+    "message": "Matchbox",
+    "description": "Matchbox object name"
+  },
+  "objectCards": {
+    "message": "Deck of cards",
+    "description": "Card deck object name"
+  },
+  "objectCoin": {
+    "message": "Czech 10 CZK coin",
+    "description": "Coin object name"
+  },
+  "objectPencil": {
+    "message": "Pencil (diameter)",
+    "description": "Pencil object name"
+  },
+  "objectSmartphone": {
+    "message": "Smartphone (thickness)",
+    "description": "Smartphone object name"
+  },
+  "saveBook": {
+    "message": "Save for comparison",
+    "description": "Button to save book for later comparison"
+  },
+  "bookSaved": {
+    "message": "Saved!",
+    "description": "Confirmation that book was saved"
+  },
+  "bookAlreadySaved": {
+    "message": "Already saved",
+    "description": "Book is already in saved list"
+  },
+  "savedBooks": {
+    "message": "Saved books",
+    "description": "Category name for saved books"
+  },
+  "deleteSavedBook": {
+    "message": "Remove from saved",
+    "description": "Button to delete saved book"
+  },
+  "deleteAllSaved": {
+    "message": "Clear all saved",
+    "description": "Button to delete all saved books"
+  },
+  "noSavedBooks": {
+    "message": "No saved books",
+    "description": "Message when no books are saved"
+  }
+}

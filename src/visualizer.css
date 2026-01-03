@@ -1,0 +1,340 @@
+/* CSS Reset pro Shadow DOM */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Spouštěcí ikonka */
+.bdv-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  cursor: pointer;
+  background: #4A90D9;
+  border-radius: 4px;
+  border: none;
+  vertical-align: middle;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.bdv-trigger:hover {
+  background: #357ABD;
+  transform: scale(1.1);
+}
+
+.bdv-trigger svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
+}
+
+/* Overlay pozadí */
+.bdv-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hlavní modal */
+.bdv-modal {
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  z-index: 99999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Header modalu */
+.bdv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+}
+
+.bdv-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.bdv-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.bdv-close:hover {
+  background: #e0e0e0;
+}
+
+.bdv-close svg {
+  width: 20px;
+  height: 20px;
+  fill: #666;
+}
+
+/* Obsah modalu */
+.bdv-content {
+  padding: 20px;
+}
+
+/* Sekce */
+.bdv-section {
+  margin-bottom: 24px;
+}
+
+.bdv-section:last-child {
+  margin-bottom: 0;
+}
+
+.bdv-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Select dropdown */
+.bdv-select-wrapper {
+  margin-bottom: 16px;
+}
+
+.bdv-select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.bdv-select:hover {
+  border-color: #4A90D9;
+}
+
+.bdv-select:focus {
+  outline: none;
+  border-color: #4A90D9;
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.2);
+}
+
+/* 2D Vizualizace kontejner */
+.bdv-2d-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Vizualizační wrapper - centruje oba obdélníky */
+.bdv-viz-wrapper {
+  position: relative;
+}
+
+/* Kniha (Target) */
+.bdv-book-rect {
+  position: absolute;
+  border: 2px solid #e53935;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(229, 57, 53, 0.1),
+    rgba(229, 57, 53, 0.1) 10px,
+    rgba(229, 57, 53, 0.2) 10px,
+    rgba(229, 57, 53, 0.2) 20px
+  );
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+/* Reference (Standard) */
+.bdv-ref-rect {
+  position: absolute;
+  border: 2px dashed #1976D2;
+  background: rgba(255, 255, 255, 0.85);
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+/* Legendy */
+.bdv-legend {
+  display: flex;
+  gap: 20px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.bdv-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.bdv-legend-color {
+  width: 20px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.bdv-legend-book {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(229, 57, 53, 0.3),
+    rgba(229, 57, 53, 0.3) 5px,
+    rgba(229, 57, 53, 0.5) 5px,
+    rgba(229, 57, 53, 0.5) 10px
+  );
+  border: 1px solid #e53935;
+}
+
+.bdv-legend-ref {
+  background: rgba(25, 118, 210, 0.2);
+  border: 1px dashed #1976D2;
+}
+
+/* Rozměry popisky */
+.bdv-dimensions-info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 12px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.bdv-dim-item {
+  text-align: center;
+}
+
+.bdv-dim-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.bdv-dim-value {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.bdv-dim-value.book {
+  color: #e53935;
+}
+
+.bdv-dim-value.ref {
+  color: #1976D2;
+}
+
+/* Tloušťka sekce */
+.bdv-thickness-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.bdv-spine {
+  height: 60px;
+  background: linear-gradient(90deg, #8B4513, #A0522D, #8B4513);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  min-width: 20px;
+}
+
+.bdv-objects-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  flex-wrap: wrap;
+  max-width: 300px;
+}
+
+.bdv-object-icon {
+  height: 40px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+.bdv-object-icon.partial {
+  opacity: 0.5;
+}
+
+.bdv-thickness-info {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+}
+
+.bdv-thickness-value {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Responsivita */
+@media (max-width: 500px) {
+  .bdv-2d-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .bdv-modal {
+    margin: 10px;
+  }
+}
