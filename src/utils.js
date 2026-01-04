@@ -24,9 +24,10 @@ function parseDimensions(text, regex, unit = 'mm') {
   const match = text.match(regex);
   if (!match) return null;
 
-  const rawWidth = parseFloat(match[1]);
-  const rawHeight = parseFloat(match[2]);
-  const rawThickness = match[3] ? parseFloat(match[3]) : null;
+  // Nahradíme desetinnou čárku tečkou pro parseFloat
+  const rawWidth = parseFloat(match[1].replace(',', '.'));
+  const rawHeight = parseFloat(match[2].replace(',', '.'));
+  const rawThickness = match[3] ? parseFloat(match[3].replace(',', '.')) : null;
 
   // Převod na milimetry
   const width = convertToMm(rawWidth, unit);

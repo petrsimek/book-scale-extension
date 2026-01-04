@@ -96,6 +96,24 @@ const SITES_CONFIG = [
       // Rozměry jsou v mm, ale bez uvedení jednotky
       unit: 'mm'
     }
+  },
+  {
+    domain: 'arkham.cz',
+    selectors: {
+      // Kontejner - buňky tabulky s parametry
+      dimensions_container: '.detail-parameters td',
+      // Regex: šířka x výška cm (desetinná čárka volitelná)
+      dimensions_regex: /(\d+(?:[,\.]\d+)?)\s*[xX×]\s*(\d+(?:[,\.]\d+)?)\s*cm/i,
+      // Název produktu
+      title: 'h1',
+      // Kotva - buňka s rozměry
+      anchor: '.detail-parameters td',
+      anchor_method: 'append'
+    },
+    settings: {
+      preferred_groups: ['iso', 'books'],
+      unit: 'cm'
+    }
   }
 ];
 
