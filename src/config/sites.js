@@ -41,6 +41,24 @@ const SITES_CONFIG = [
       preferred_groups: ['iso', 'us_comics', 'manga', 'bd'],
       unit: 'mm'
     }
+  },
+  {
+    domain: 'comicspoint.cz',
+    selectors: {
+      // Kontejner - buňky tabulky s parametry
+      dimensions_container: '.detail-parameters-wrapper td, .p-param-block td',
+      // Regex: Šířka x Výška mm
+      dimensions_regex: /(\d+)\s*[×xX]\s*(\d+)\s*mm/i,
+      // Název produktu
+      title: 'h1',
+      // Kotva - buňka s rozměry
+      anchor: '.detail-parameters-wrapper td',
+      anchor_method: 'append'
+    },
+    settings: {
+      preferred_groups: ['iso', 'us_comics', 'manga', 'bd'],
+      unit: 'mm'
+    }
   }
 ];
 
