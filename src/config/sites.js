@@ -132,6 +132,24 @@ const SITES_CONFIG = [
       preferred_groups: ['iso', 'books'],
       unit: 'mm'
     }
+  },
+  {
+    domain: 'albatrosmedia.cz',
+    selectors: {
+      // Kontejner - span elementy v product params
+      dimensions_container: '.product__params span',
+      // Regex: šířka x výška mm
+      dimensions_regex: /(\d+)\s*[xX×]\s*(\d+)\s*mm/i,
+      // Název produktu
+      title: 'h1',
+      // Kotva - span s rozměry
+      anchor: '.product__params span',
+      anchor_method: 'append'
+    },
+    settings: {
+      preferred_groups: ['iso', 'books'],
+      unit: 'mm'
+    }
   }
 ];
 
