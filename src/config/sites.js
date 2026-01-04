@@ -77,6 +77,25 @@ const SITES_CONFIG = [
       preferred_groups: ['iso', 'us_comics', 'manga', 'bd'],
       unit: 'mm'
     }
+  },
+  {
+    domain: 'knihydobrovsky.cz',
+    selectors: {
+      // Kontejner - dd elementy v definition listu
+      dimensions_container: 'dd',
+      // Regex: šířka x výška x tloušťka (bez jednotky, hodnoty v mm)
+      dimensions_regex: /(\d+)\s*[xX×]\s*(\d+)(?:\s*[xX×]\s*(\d+))?(?!\s*mm)/,
+      // Název produktu
+      title: 'h1',
+      // Kotva - dd element s rozměry
+      anchor: 'dd',
+      anchor_method: 'append'
+    },
+    settings: {
+      preferred_groups: ['iso', 'books'],
+      // Rozměry jsou v mm, ale bez uvedení jednotky
+      unit: 'mm'
+    }
   }
 ];
 
