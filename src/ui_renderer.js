@@ -453,18 +453,18 @@ const CLOSE_ICON = `
  * @param {HTMLElement} button - Button k vložení
  */
 function insertAfterDimensionText(container, button) {
-  // Regex pro nalezení rozměrů
+  // Regex pro nalezení rozměrů ve standardním formátu (šířka x výška mm)
   const dimensionRegex = /\d+\s*[×xX]\s*\d+\s*mm/i;
+  // Regex pro rozměry ve formátu "šířka/výška/hřbet: XXX mm"
+  const separateDimensionRegex = /(?:šířka|výška|hřbet|šířka\s*hřbetu):\s*\d+\s*mm/i;
 
-  // Procházíme childNodes a hledáme element nebo text s rozměry
   const childNodes = Array.from(container.childNodes);
 
+  // Nejdřív zkusíme najít standardní formát nebo element s ním
   for (let i = 0; i < childNodes.length; i++) {
     const node = childNodes[i];
 
-    // Hledáme textový uzel s rozměry
     if (node.nodeType === Node.TEXT_NODE && dimensionRegex.test(node.textContent)) {
-      // Našli jsme text s rozměry - vložíme button za něj
       const nextNode = childNodes[i + 1];
       if (nextNode) {
         container.insertBefore(button, nextNode);
@@ -474,9 +474,7 @@ function insertAfterDimensionText(container, button) {
       return;
     }
 
-    // Hledáme element (např. STRONG) obsahující rozměry
-    if (node.nodeType === Node.ELEMENT_NODE && dimensionRegex.test(node.textContent)) {
-      // Našli jsme element s rozměry - vložíme button za něj (před BR)
+    if (node.nodeType === Node.ELEMENT_NODE && node.nodeName !== 'BR' && dimensionRegex.test(node.textContent)) {
       const nextNode = childNodes[i + 1];
       if (nextNode) {
         container.insertBefore(button, nextNode);
@@ -485,6 +483,25 @@ function insertAfterDimensionText(container, button) {
       }
       return;
     }
+  }
+
+  // Pokud nenajdeme standardní formát, hledáme oddělené rozměry (šířka hřbetu/výška jako poslední)
+  let lastDimensionIndex = -1;
+  for (let i = 0; i < childNodes.length; i++) {
+    const node = childNodes[i];
+    if (node.nodeType === Node.TEXT_NODE && separateDimensionRegex.test(node.textContent)) {
+      lastDimensionIndex = i;
+    }
+  }
+
+  if (lastDimensionIndex >= 0) {
+    const nextNode = childNodes[lastDimensionIndex + 1];
+    if (nextNode) {
+      container.insertBefore(button, nextNode);
+    } else {
+      container.appendChild(button);
+    }
+    return;
   }
 
   // Fallback - pokud nenajdeme, přidáme na konec

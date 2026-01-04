@@ -59,6 +59,24 @@ const SITES_CONFIG = [
       preferred_groups: ['iso', 'us_comics', 'manga', 'bd'],
       unit: 'mm'
     }
+  },
+  {
+    domain: 'comicscentrum.cz',
+    selectors: {
+      // Kontejner - odstavec s podrobnostmi
+      dimensions_container: '#podrobnosti + p, #vmMainPage p',
+      // Regex: šířka: XXX mm ... výška: XXX mm ... šířka hřbetu: XXX mm
+      dimensions_regex: /šířka:\s*(\d+)\s*mm[\s\S]*?výška:\s*(\d+)\s*mm(?:[\s\S]*?(?:šířka\s*hřbetu|hřbet):\s*(\d+)\s*mm)?/i,
+      // Název produktu
+      title: 'h1',
+      // Kotva - element s rozměry
+      anchor: '#podrobnosti + p',
+      anchor_method: 'after_text'
+    },
+    settings: {
+      preferred_groups: ['iso', 'us_comics', 'manga', 'bd'],
+      unit: 'mm'
+    }
   }
 ];
 
