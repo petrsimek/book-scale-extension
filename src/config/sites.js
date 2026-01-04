@@ -17,10 +17,41 @@ const SITES_CONFIG = [
     },
     settings: {
       // Které skupiny formátů nabízet
-      preferred_groups: ['iso', 'us_comics', 'manga', 'bd']
+      preferred_groups: ['iso', 'us_comics', 'manga', 'bd'],
+      // Jednotka rozměrů: 'mm' | 'cm' | 'in' (palce)
+      // Pokud web neuvádí jednotku, specifikuj ji zde
+      unit: 'mm'
+    }
+  },
+  {
+    domain: 'obchod.crew.cz',
+    selectors: {
+      // Kontejner - pouze p element v info sekci
+      dimensions_container: '#detail_info > p',
+      // Regex: Šířka × Výška mm (bez tloušťky)
+      dimensions_regex: /(\d+)\s*[×xX]\s*(\d+)\s*mm/i,
+      // Název produktu
+      title: 'h1',
+      // Kotva - použije se element kde byly rozměry nalezeny
+      anchor: '#detail_info > p',
+      // Vloží ikonu přímo za text s rozměry
+      anchor_method: 'after_text'
+    },
+    settings: {
+      preferred_groups: ['iso', 'us_comics', 'manga', 'bd'],
+      unit: 'mm'
     }
   }
 ];
+
+/**
+ * Převodní tabulka jednotek na milimetry
+ */
+const UNIT_TO_MM = {
+  mm: 1,
+  cm: 10,
+  in: 25.4
+};
 
 /**
  * Najde konfiguraci pro aktuální doménu

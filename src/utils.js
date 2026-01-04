@@ -3,18 +3,35 @@
  */
 
 /**
+ * Převede hodnotu na milimetry podle jednotky
+ * @param {number} value - Hodnota k převodu
+ * @param {string} unit - Jednotka ('mm' | 'cm' | 'in')
+ * @returns {number} - Hodnota v milimetrech
+ */
+function convertToMm(value, unit) {
+  const multiplier = UNIT_TO_MM[unit] || 1;
+  return Math.round(value * multiplier);
+}
+
+/**
  * Parsuje rozměry z textu pomocí regex
  * @param {string} text - Text obsahující rozměry
  * @param {RegExp} regex - Regex pro extrakci rozměrů
- * @returns {Object|null} - Objekt s width, height, thickness nebo null
+ * @param {string} unit - Jednotka rozměrů ('mm' | 'cm' | 'in')
+ * @returns {Object|null} - Objekt s width, height, thickness v mm nebo null
  */
-function parseDimensions(text, regex) {
+function parseDimensions(text, regex, unit = 'mm') {
   const match = text.match(regex);
   if (!match) return null;
 
-  const width = parseInt(match[1], 10);
-  const height = parseInt(match[2], 10);
-  const thickness = match[3] ? parseInt(match[3], 10) : null;
+  const rawWidth = parseFloat(match[1]);
+  const rawHeight = parseFloat(match[2]);
+  const rawThickness = match[3] ? parseFloat(match[3]) : null;
+
+  // Převod na milimetry
+  const width = convertToMm(rawWidth, unit);
+  const height = convertToMm(rawHeight, unit);
+  const thickness = rawThickness ? convertToMm(rawThickness, unit) : null;
 
   // Validace - rozměry musí být větší než 50mm
   if (width < 50 || height < 50) return null;
@@ -25,14 +42,16 @@ function parseDimensions(text, regex) {
 /**
  * Najde rozměry na stránce pomocí selektorů
  * @param {Object} selectors - Selektory z konfigurace webu
+ * @param {Object} settings - Nastavení z konfigurace webu
  * @returns {Object|null} - Objekt s rozměry a elementem nebo null
  */
-function findDimensionsOnPage(selectors) {
+function findDimensionsOnPage(selectors, settings = {}) {
   const containers = document.querySelectorAll(selectors.dimensions_container);
+  const unit = settings.unit || 'mm';
 
   for (const container of containers) {
     const text = container.textContent || '';
-    const dimensions = parseDimensions(text, selectors.dimensions_regex);
+    const dimensions = parseDimensions(text, selectors.dimensions_regex, unit);
     if (dimensions) {
       // Vrátíme i element, kde byly rozměry nalezeny
       dimensions.element = container;

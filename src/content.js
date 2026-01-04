@@ -47,7 +47,7 @@
     log('Zpracovávám stránku, selektory:', selectors);
 
     // Najdeme rozměry
-    const dimensions = findDimensionsOnPage(selectors);
+    const dimensions = findDimensionsOnPage(selectors, siteConfig.settings);
     log('Nalezené rozměry:', dimensions);
 
     if (!dimensions) {
