@@ -12,7 +12,7 @@
     "description": "Tooltip for trigger button"
   },
   "modalTitle": {
-    "message": "Dimensions: $TITLE$",
+    "message": "$TITLE$",
     "description": "Modal window title",
     "placeholders": {
       "title": {
