@@ -17,7 +17,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.comicsdb.cz/*", "*://*.obchod.crew.cz/*", "*://*.comicspoint.cz/*", "*://*.comicscentrum.cz/*", "*://*.knihydobrovsky.cz/*", "*://*.arkham.cz/*"],
+      "matches": ["*://*.comicsdb.cz/*", "*://*.obchod.crew.cz/*", "*://*.comicspoint.cz/*", "*://*.comicscentrum.cz/*", "*://*.knihydobrovsky.cz/*", "*://*.arkham.cz/*", "*://*.krakatit.cz/*"],
       "js": [
         "src/i18n.js",
         "src/storage.js",

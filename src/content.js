@@ -15,6 +15,31 @@
   }
 
   /**
+   * Počká na element (pro SPA stránky)
+   * @param {string} selector - CSS selektor
+   * @param {number} maxAttempts - Maximální počet pokusů
+   * @param {number} interval - Interval mezi pokusy v ms
+   * @returns {Promise<Element|null>}
+   */
+  function waitForElement(selector, maxAttempts = 20, interval = 250) {
+    return new Promise((resolve) => {
+      let attempts = 0;
+      const check = () => {
+        const element = document.querySelector(selector);
+        if (element) {
+          resolve(element);
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(check, interval);
+        } else {
+          resolve(null);
+        }
+      };
+      check();
+    });
+  }
+
+  /**
    * Inicializace rozšíření
    */
   function init() {
@@ -32,10 +57,64 @@
 
     // Počkáme na úplné načtení DOM
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => processPage(siteConfig));
+      document.addEventListener('DOMContentLoaded', () => tryProcessPage(siteConfig));
     } else {
-      processPage(siteConfig);
+      tryProcessPage(siteConfig);
     }
+  }
+
+  /**
+   * Pokusí se zpracovat stránku, případně počká na SPA obsah
+   */
+  async function tryProcessPage(siteConfig) {
+    const selectors = siteConfig.selectors;
+
+    // Nejdřív zkusíme hned
+    let container = document.querySelector(selectors.dimensions_container);
+
+    // Pokud element neexistuje, počkáme (SPA)
+    if (!container) {
+      log('Element nenalezen, čekám na SPA obsah...');
+      container = await waitForElement(selectors.dimensions_container);
+    }
+
+    if (container) {
+      processPage(siteConfig);
+    } else {
+      log('Element nenalezen, nastavuji MutationObserver...');
+      // Sledujeme DOM změny (pro stránky s taby)
+      observeDOMChanges(siteConfig);
+    }
+  }
+
+  /**
+   * Sleduje DOM změny a zpracuje stránku když se objeví požadovaný element
+   */
+  function observeDOMChanges(siteConfig) {
+    const selectors = siteConfig.selectors;
+    let processed = false;
+
+    // Sledujeme kliknutí na stránce
+    document.addEventListener('click', () => {
+      if (processed) return;
+
+      // Krátké zpoždění aby se DOM stihl aktualizovat
+      setTimeout(() => {
+        const container = document.querySelector(selectors.dimensions_container);
+        if (container) {
+          const text = container.textContent || '';
+          log('Po kliku - container text length:', text.length);
+
+          if (/výška|šířka|rozměr|\d+\s*mm|\d+\s*cm/i.test(text)) {
+            log('Element s rozměry nalezen po kliku');
+            processed = true;
+            processPage(siteConfig);
+          }
+        }
+      }, 300);
+    });
+
+    log('Click listener nastaven');
   }
 
   /**

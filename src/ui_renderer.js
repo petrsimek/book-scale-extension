@@ -455,8 +455,8 @@ const CLOSE_ICON = `
 function insertAfterDimensionText(container, button) {
   // Regex pro nalezení rozměrů ve standardním formátu (šířka x výška mm)
   const dimensionRegex = /\d+\s*[×xX]\s*\d+\s*mm/i;
-  // Regex pro rozměry ve formátu "šířka/výška/hřbet: XXX mm"
-  const separateDimensionRegex = /(?:šířka|výška|hřbet|šířka\s*hřbetu):\s*\d+\s*mm/i;
+  // Regex pro rozměry ve formátu "šířka/výška/hřbet/hloubka: XXX mm"
+  const separateDimensionRegex = /(?:šířka|výška|hřbet|šířka\s*hřbetu|hloubka)[\s:]+\d+\s*mm/i;
 
   const childNodes = Array.from(container.childNodes);
 

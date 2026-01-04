@@ -50,10 +50,19 @@ function findDimensionsOnPage(selectors, settings = {}) {
   const containers = document.querySelectorAll(selectors.dimensions_container);
   const unit = settings.unit || 'mm';
 
+  console.log('[BookScale] Počet kontejnerů:', containers.length);
+
   for (const container of containers) {
     const text = container.textContent || '';
+    console.log('[BookScale] Text kontejneru (prvních 500 znaků):', text.substring(0, 500));
     const dimensions = parseDimensions(text, selectors.dimensions_regex, unit);
     if (dimensions) {
+      // Prohodíme šířku a výšku pokud je nastaveno
+      if (settings.swapWidthHeight) {
+        const temp = dimensions.width;
+        dimensions.width = dimensions.height;
+        dimensions.height = temp;
+      }
       // Vrátíme i element, kde byly rozměry nalezeny
       dimensions.element = container;
       return dimensions;
