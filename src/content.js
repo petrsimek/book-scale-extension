@@ -147,7 +147,24 @@
     log('Název knihy:', title);
 
     // Použijeme element s rozměry jako kotvu (nebo fallback na selektor)
-    const anchor = dimensions.element || document.querySelector(selectors.anchor);
+    let anchor = null;
+
+    // Pokud máme anchor_text_match, hledáme element obsahující daný text (má prioritu)
+    if (selectors.anchor_text_match) {
+      const candidates = document.querySelectorAll(selectors.anchor);
+      for (const el of candidates) {
+        if (selectors.anchor_text_match.test(el.textContent)) {
+          anchor = el;
+          break;
+        }
+      }
+    }
+
+    // Fallback na dimensions.element nebo první nalezený anchor
+    if (!anchor) {
+      anchor = dimensions.element || document.querySelector(selectors.anchor);
+    }
+
     log('Kotevní element:', anchor);
 
     if (!anchor) {

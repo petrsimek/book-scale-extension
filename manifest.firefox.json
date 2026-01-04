@@ -25,7 +25,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.comicsdb.cz/*", "*://*.obchod.crew.cz/*", "*://*.comicspoint.cz/*", "*://*.comicscentrum.cz/*", "*://*.knihydobrovsky.cz/*", "*://*.arkham.cz/*", "*://*.krakatit.cz/*", "*://*.albatrosmedia.cz/*", "*://*.xyz.cz/*", "*://*.kosmas.cz/*", "*://*.martinus.cz/*"],
+      "matches": ["*://*.comicsdb.cz/*", "*://*.obchod.crew.cz/*", "*://*.comicspoint.cz/*", "*://*.comicscentrum.cz/*", "*://*.knihydobrovsky.cz/*", "*://*.arkham.cz/*", "*://*.krakatit.cz/*", "*://*.albatrosmedia.cz/*", "*://*.xyz.cz/*", "*://*.kosmas.cz/*", "*://*.martinus.cz/*", "*://*.megaknihy.cz/*"],
       "js": [
         "src/i18n.js",
         "src/storage.js",

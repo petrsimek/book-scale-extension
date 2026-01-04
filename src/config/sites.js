@@ -200,6 +200,24 @@ const SITES_CONFIG = [
       preferred_groups: ['iso', 'books'],
       unit: 'mm'
     }
+  },
+  {
+    domain: 'megaknihy.cz',
+    selectors: {
+      // Kontejner - ul nebo sekce s parametry
+      dimensions_container: 'ul, .product-params, #product-details',
+      // Regex pro oddělené rozměry: Šířka balení: X cm ... Výška balení: Y cm
+      dimensions_regex: /[šŠ]ířka[^:]*:\s*(\d+(?:[.,]\d+)?)\s*cm[\s\S]*[vV]ýška[^:]*:\s*(\d+(?:[.,]\d+)?)\s*cm/i,
+      title: 'h1',
+      // Anchor - hledáme li obsahující "Šířka"
+      anchor: 'li',
+      anchor_method: 'append',
+      anchor_text_match: /[šŠ]ířka/
+    },
+    settings: {
+      preferred_groups: ['iso', 'books'],
+      unit: 'cm'
+    }
   }
 ];
 
