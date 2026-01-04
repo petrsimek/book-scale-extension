@@ -168,6 +168,24 @@ const SITES_CONFIG = [
       preferred_groups: ['iso', 'books'],
       unit: 'mm'
     }
+  },
+  {
+    domain: 'kosmas.cz',
+    selectors: {
+      // Kontejner - dd elementy v definition listu
+      dimensions_container: 'dd',
+      // Regex: šířka × výška cm (s desetinnou čárkou)
+      dimensions_regex: /(\d+(?:[,\.]\d+)?)\s*[×xX]\s*(\d+(?:[,\.]\d+)?)\s*cm/i,
+      // Název produktu
+      title: 'h2',
+      // Kotva - dd element s rozměry
+      anchor: 'dd',
+      anchor_method: 'append'
+    },
+    settings: {
+      preferred_groups: ['iso', 'books'],
+      unit: 'cm'
+    }
   }
 ];
 
