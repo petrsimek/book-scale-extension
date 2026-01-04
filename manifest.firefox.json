@@ -15,6 +15,14 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    },
+    "default_popup": "src/popup.html",
+    "default_title": "__MSG_extensionName__"
+  },
   "content_scripts": [
     {
       "matches": ["*://*.comicsdb.cz/*", "*://*.obchod.crew.cz/*", "*://*.comicspoint.cz/*", "*://*.comicscentrum.cz/*", "*://*.knihydobrovsky.cz/*", "*://*.arkham.cz/*", "*://*.krakatit.cz/*", "*://*.albatrosmedia.cz/*", "*://*.xyz.cz/*"],

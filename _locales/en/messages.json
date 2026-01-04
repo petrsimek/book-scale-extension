@@ -150,5 +150,17 @@
   "noSavedBooks": {
     "message": "No saved books",
     "description": "Message when no books are saved"
+  },
+  "popupSitesTitle": {
+    "message": "Supported websites:",
+    "description": "Title for supported sites list in popup"
+  },
+  "popupHowToUse": {
+    "message": "How to use:",
+    "description": "How to use title in popup"
+  },
+  "popupInstructions": {
+    "message": "Visit a book detail page on a supported website. A ruler icon will appear next to the dimensions - click it to open the visualization.",
+    "description": "Usage instructions in popup"
   }
 }

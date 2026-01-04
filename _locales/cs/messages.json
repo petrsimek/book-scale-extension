@@ -150,5 +150,17 @@
   "noSavedBooks": {
     "message": "Žádné uložené knihy",
     "description": "Message when no books are saved"
+  },
+  "popupSitesTitle": {
+    "message": "Podporované weby:",
+    "description": "Title for supported sites list in popup"
+  },
+  "popupHowToUse": {
+    "message": "Jak používat:",
+    "description": "How to use title in popup"
+  },
+  "popupInstructions": {
+    "message": "Navštivte detail knihy na podporovaném webu. U rozměrů se zobrazí ikona pravítka - kliknutím otevřete vizualizaci.",
+    "description": "Usage instructions in popup"
   }
 }
