@@ -186,6 +186,20 @@ const SITES_CONFIG = [
       preferred_groups: ['iso', 'books'],
       unit: 'cm'
     }
+  },
+  {
+    domain: 'martinus.cz',
+    selectors: {
+      dimensions_container: 'dd',
+      dimensions_regex: /(\d+)\s*[×xX]\s*(\d+)\s*mm/i,
+      title: 'h1',
+      anchor: 'dd',
+      anchor_method: 'append'
+    },
+    settings: {
+      preferred_groups: ['iso', 'books'],
+      unit: 'mm'
+    }
   }
 ];
 

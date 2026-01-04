@@ -516,13 +516,12 @@ function insertAfterDimensionText(container, button) {
  * @returns {HTMLElement} - Shadow host element
  */
 function createTriggerButton(anchorElement, method, onClick) {
-  // Vytvoříme button přímo bez Shadow DOM pro lepší kompatibilitu
   const button = document.createElement('button');
+  button.type = 'button';
   button.className = 'bdv-trigger-btn';
   button.innerHTML = RULER_ICON;
   button.title = i18n('triggerTitle');
 
-  // Inline styly s !important pro přepsání Bootstrap
   button.style.cssText = `
     display: inline-flex !important;
     align-items: center !important;
@@ -539,7 +538,6 @@ function createTriggerButton(anchorElement, method, onClick) {
     transition: background-color 0.2s, transform 0.2s !important;
   `;
 
-  // SVG styling
   const svg = button.querySelector('svg');
   if (svg) {
     svg.style.cssText = 'width: 18px !important; height: 18px !important; fill: white !important;';
@@ -570,7 +568,6 @@ function createTriggerButton(anchorElement, method, onClick) {
       anchorElement.after(button);
       break;
     case 'after_text':
-      // Speciální metoda: vloží ikonu přímo za text s rozměry (před <br>)
       insertAfterDimensionText(anchorElement, button);
       break;
     case 'append':
@@ -578,27 +575,6 @@ function createTriggerButton(anchorElement, method, onClick) {
       anchorElement.appendChild(button);
       break;
   }
-
-  console.log('[BookScale] Button vytvořen:', button);
-  console.log('[BookScale] Button parentElement:', button.parentElement);
-
-  const styles = window.getComputedStyle(button);
-  console.log('[BookScale] Button styles:', {
-    display: styles.display,
-    visibility: styles.visibility,
-    opacity: styles.opacity,
-    width: styles.width,
-    height: styles.height,
-    position: styles.position
-  });
-
-  const rect = button.getBoundingClientRect();
-  console.log('[BookScale] Button position:', {
-    top: rect.top,
-    left: rect.left,
-    width: rect.width,
-    height: rect.height
-  });
 
   return button;
 }
