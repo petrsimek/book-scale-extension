@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build script for book-scale-extension
-# Creates ZIP packages for Chrome Web Store and Firefox Add-ons
+# Creates ZIP packages for Chrome Web Store, Firefox Add-ons, and Microsoft Edge Add-ons
 
 set -e
 
@@ -78,14 +78,38 @@ build_firefox() {
     echo -e "${GREEN}✓ Created: dist/$ZIP_NAME${NC}"
 }
 
+# Build Edge version (uses same manifest as Chrome - Manifest V3)
+build_edge() {
+    echo -e "\n${YELLOW}Building Edge extension...${NC}"
+
+    local EDGE_DIR="$BUILD_DIR/edge"
+    mkdir -p "$EDGE_DIR"
+
+    # Copy files (same as Chrome - Edge uses Manifest V3)
+    for file in "${INCLUDE_FILES[@]}"; do
+        cp -r "$PROJECT_DIR/$file" "$EDGE_DIR/"
+    done
+
+    # Create ZIP
+    local ZIP_NAME="book-scale-extension-edge-v${VERSION}.zip"
+    cd "$EDGE_DIR"
+    zip -r "$BUILD_DIR/$ZIP_NAME" . -x "*.DS_Store"
+    cd "$PROJECT_DIR"
+
+    echo -e "${GREEN}✓ Created: dist/$ZIP_NAME${NC}"
+}
+
 # Parse arguments
 if [ "$1" == "chrome" ]; then
     build_chrome
 elif [ "$1" == "firefox" ]; then
     build_firefox
+elif [ "$1" == "edge" ]; then
+    build_edge
 else
     build_chrome
     build_firefox
+    build_edge
 fi
 
 echo -e "\n${GREEN}Build complete!${NC}"

@@ -1,87 +1,107 @@
-# book-scale-extension / KnihoMetr
+<div align="center">
 
-Browser extension for visualizing and comparing book dimensions with standard formats.
+# BookScale
+
+**Visualize book dimensions before you buy**
+
+[![Chrome Web Store](https://img.shields.io/badge/Chrome-Download-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/bookscale/bkjkdinpddelgkamlagodbfdmnimaddp)
+[![Firefox Add-ons](https://img.shields.io/badge/Firefox-Download-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white)](https://addons.mozilla.org/cs/firefox/addon/bookscale/)
+[![Edge Add-ons](https://img.shields.io/badge/Edge-Coming%20Soon-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white)](#installation)
+
+</div>
+
+---
+
+## What is BookScale?
+
+BookScale is a browser extension that helps you understand the actual size of books, comics, and manga before purchasing. Simply visit a supported online bookstore, and a ruler icon will appear next to the book dimensions. Click it to see a visual comparison with standard formats.
+
+<div align="center">
+
+![Ruler icon next to dimensions](img/example_icon.jpg)
+
+![Size comparison dialog](img/example_dialog.jpg)
+
+</div>
 
 ## Features
 
-- Parse book dimensions from e-shop pages (width × height × thickness)
-- Visual 2D comparison with reference formats (A4, A5, US Comic, Manga, BD Album, etc.)
-- Spine thickness comparison with real-world objects (matchbox, coin)
-- Save books for later comparison
-- Multilingual support (English, Czech)
+- **Visual Size Comparison** — Compare books with standard formats: A4, A5, US Comic, Omnibus, Tankobon, BD Album, and more
+- **Spine Thickness** — See how thick the book is compared to everyday objects (matchbox, deck of cards, coin)
+- **Save Books** — Save books for later comparison across different stores
+- **Automatic Detection** — Works automatically on supported websites
+- **Multilingual** — Available in English and Czech
 
-## Developer Installation
+## Installation
 
-### Google Chrome
+### From Browser Stores (Recommended)
 
-1. Open Chrome and navigate to `chrome://extensions/`
-2. Enable **Developer mode** (toggle in the top right corner)
-3. Click **Load unpacked**
-4. Select the `book-scale-extension` folder (the one containing `manifest.json`)
-5. The extension icon should appear in your toolbar
+| Browser | Status | Link |
+|---------|--------|------|
+| **Google Chrome** | Available | [Chrome Web Store](https://chromewebstore.google.com/detail/bookscale/bkjkdinpddelgkamlagodbfdmnimaddp) |
+| **Mozilla Firefox** | Available | [Firefox Add-ons](https://addons.mozilla.org/cs/firefox/addon/bookscale/) |
+| **Microsoft Edge** | Under Review | Coming soon |
 
-To reload after changes:
-- Click the refresh icon on the extension card in `chrome://extensions/`
+### Manual Installation (for developers)
 
-### Mozilla Firefox
+<details>
+<summary>Chrome / Edge</summary>
 
-1. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
-2. Click **Load Temporary Add-on...**
-3. Select the `manifest.firefox.json` file from the `book-scale-extension` folder
-4. The extension icon should appear in your toolbar
+1. Download or clone this repository
+2. Open `chrome://extensions/` (or `edge://extensions/`)
+3. Enable **Developer mode**
+4. Click **Load unpacked**
+5. Select the project folder containing `manifest.json`
 
-Note: Temporary add-ons in Firefox are removed when the browser closes. For persistent installation during development, use [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/).
+</details>
 
-To reload after changes:
-- Click **Reload** next to the extension in `about:debugging`
+<details>
+<summary>Firefox</summary>
 
-## Usage
+1. Download or clone this repository
+2. Open `about:debugging#/runtime/this-firefox`
+3. Click **Load Temporary Add-on...**
+4. Select `manifest.firefox.json`
 
-1. Navigate to a supported site (currently [comicsdb.cz](https://comicsdb.cz))
-2. Open a book/comic detail page
-3. Look for the blue ruler icon next to the dimensions
-4. Click the icon to open the visualization modal
+Note: Temporary add-ons are removed when Firefox closes.
 
-## Project Structure
+</details>
 
-```
-book-scale-extension/
-├── manifest.json           # Chrome manifest (Manifest V3)
-├── manifest.firefox.json   # Firefox manifest (Manifest V3)
-├── _locales/
-│   ├── en/messages.json    # English translations
-│   └── cs/messages.json    # Czech translations
-├── icons/
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
-├── src/
-│   ├── i18n.js             # Internationalization helper
-│   ├── storage.js          # localStorage for saved books
-│   ├── config/
-│   │   ├── constants.js    # Reference formats & thickness objects
-│   │   └── sites.js        # Site-specific selectors
-│   ├── utils.js            # Helper functions
-│   ├── ui_renderer.js      # Modal UI rendering
-│   └── content.js          # Main content script
-└── README.md
-```
+## Supported Websites
 
-## Adding Support for New Sites
+BookScale currently works on these online bookstores:
 
-Edit `src/config/sites.js` and add a new entry to the `SITE_CONFIGS` object:
+| Store | Website |
+|-------|---------|
+| ComicsDB | [comicsdb.cz](https://comicsdb.cz) |
+| Crew | [obchod.crew.cz](https://obchod.crew.cz) |
+| ComicsPoint | [comicspoint.cz](https://comicspoint.cz) |
+| ComicsCentrum | [comicscentrum.cz](https://comicscentrum.cz) |
+| Knihy Dobrovský | [knihydobrovsky.cz](https://knihydobrovsky.cz) |
+| Arkham | [arkham.cz](https://arkham.cz) |
+| Krakatit | [krakatit.cz](https://krakatit.cz) |
+| Albatros Media | [albatrosmedia.cz](https://albatrosmedia.cz) |
+| XYZ | [xyz.cz](https://xyz.cz) |
+| Kosmas | [kosmas.cz](https://kosmas.cz) |
+| Martinus | [martinus.cz](https://martinus.cz) |
+| Megaknihy | [megaknihy.cz](https://megaknihy.cz) |
 
-```javascript
-'example.com': {
-  dimensions_container: 'selector-for-dimensions-element',
-  dimensions_regex: /(\d+)\s*[xX×]\s*(\d+)(?:\s*[xX×]\s*(\d+))?\s*mm/i,
-  title: 'selector-for-book-title',
-  anchor: 'selector-for-button-placement',
-  anchor_method: 'append', // 'append', 'prepend', or 'after'
-  preferred_groups: ['iso', 'books']
-}
-```
+## How to Use
+
+1. Visit a book detail page on any supported website
+2. Look for the **ruler icon** next to the book dimensions
+3. Click the icon to open the comparison dialog
+4. Select a reference format from the dropdown to compare sizes
+5. Optionally save the book for later comparison
 
 ## License
 
 MIT
+
+---
+
+<div align="center">
+
+Made with visual precision for book lovers
+
+</div>
