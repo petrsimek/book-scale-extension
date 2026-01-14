@@ -6,7 +6,7 @@
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome-Download-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/bookscale/bkjkdinpddelgkamlagodbfdmnimaddp)
 [![Firefox Add-ons](https://img.shields.io/badge/Firefox-Download-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white)](https://addons.mozilla.org/cs/firefox/addon/bookscale/)
-[![Edge Add-ons](https://img.shields.io/badge/Edge-Coming%20Soon-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white)](#installation)
+[![Edge Add-ons](https://img.shields.io/badge/Edge-Download-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white)](https://microsoftedge.microsoft.com/addons/detail/knihometr/bbepimjanicaknkoieiljegaaiccjfol)
 
 </div>
 
@@ -40,7 +40,7 @@ BookScale is a browser extension that helps you understand the actual size of bo
 |---------|--------|------|
 | **Google Chrome** | Available | [Chrome Web Store](https://chromewebstore.google.com/detail/bookscale/bkjkdinpddelgkamlagodbfdmnimaddp) |
 | **Mozilla Firefox** | Available | [Firefox Add-ons](https://addons.mozilla.org/cs/firefox/addon/bookscale/) |
-| **Microsoft Edge** | Under Review | Coming soon |
+| **Microsoft Edge** | Available | [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/knihometr/bbepimjanicaknkoieiljegaaiccjfol) |
 
 ### Manual Installation (for developers)
 
